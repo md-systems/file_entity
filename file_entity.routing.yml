@@ -1,5 +1,5 @@
 # @todo Move this back to admin/config/media/file-types in Drupal 8 if MenuTreeStorage::MAX_DEPTH is increased to a value higher than 9.
-file_entity.file_types_overview:
+entity.file_type.canonical:
   path: 'admin/structure/file-types'
   defaults:
     _entity_list: 'file_type'
@@ -15,7 +15,7 @@ file_entity.file_types_add:
   requirements:
     _permission: 'administer file types'
 
-file_entity.file_types_manage:
+entity.file_type.edit_form:
   path: 'admin/structure/file-types/manage/{file_type}/edit'
   defaults:
     _entity_form: 'file_type.default'
@@ -23,7 +23,7 @@ file_entity.file_types_manage:
   requirements:
     _permission: 'administer file types'
 
-file_entity.file_types_manage_enable:
+entity.file_type.enable:
   path: 'admin/structure/file-types/manage/{file_type}/enable'
   defaults:
     _entity_form: 'file_type.enable'
@@ -31,7 +31,7 @@ file_entity.file_types_manage_enable:
   requirements:
     _permission: 'administer file types'
 
-file_entity.file_types_manage_disable:
+entity.file_type.disable:
   path: 'admin/structure/file-types/manage/{file_type}/disable'
   defaults:
     _entity_form: 'file_type.disable'
@@ -39,7 +39,7 @@ file_entity.file_types_manage_disable:
   requirements:
     _permission: 'administer file types'
 
-file_entity.file_types_manage_delete:
+entity.file_type.delete_form:
   path: 'admin/structure/file-types/manage/{file_type}/delete'
   defaults:
     _entity_form: 'file_type.delete'
@@ -87,7 +87,7 @@ file_entity.file_add_upload_archive:
   options:
     _admin_route: TRUE
 
-file_entity.file:
+entity.file.canonical:
   path: 'file/{file}'
   defaults:
     _entity_view: 'file.full'
