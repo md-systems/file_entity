@@ -37,11 +37,11 @@ use string;
  *     "status" = "status",
  *   },
  *   links = {
- *     "canonical" = "file_entity.file_types_overview",
- *     "edit-form" = "file_entity.file_types_manage",
- *     "delete-form" = "file_entity.file_types_manage_delete",
- *     "enable" = "file_entity.file_types_manage_enable",
- *     "disable" = "file_entity.file_types_manage_disable",
+ *     "canonical" = "entity.file_type.canonical",
+ *     "edit-form" = "entity.file_type.edit_form",
+ *     "delete-form" = "entity.file_type.delete_form",
+ *     "enable" = "entity.file_type.enable",
+ *     "disable" = "entity.file_type.disable",
  *   },
  * )
  */

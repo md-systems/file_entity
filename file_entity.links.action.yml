@@ -2,7 +2,7 @@ file_entity.file_type_add:
   route_name: file_entity.file_types_add
   title: 'Add file type'
   appears_on:
-    - file_entity.file_types_overview
+    - entity.file_type.canonical
 
 file_entity.file_add:
   route_name: file_entity.file_add
