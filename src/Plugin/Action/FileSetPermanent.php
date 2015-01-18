@@ -8,6 +8,7 @@
 namespace Drupal\file_entity\Plugin\Action;
 
 use Drupal\Core\Action\ActionBase;
+use Drupal\Core\Session\AccountInterface;
 use Drupal\file_entity\Entity\FileEntity;
 
 /**
@@ -28,6 +29,23 @@ class FileSetPermanent extends ActionBase {
     /** @var FileEntity $entity */
     $entity->setPermanent();
     $entity->save();
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function executeMultiple(array $entities) {
+    foreach ( $entities as $entity ) {
+      $entity->setPermanent();
+      $entity->save();
+    }
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function access($object, AccountInterface $account = NULL, $return_as_object = FALSE) {
+    return true;
   }
 
 }
