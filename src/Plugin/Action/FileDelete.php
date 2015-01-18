@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @file
  * Contains \Drupal\file_entity\Plugin\Action\FileDelete.
@@ -9,6 +8,7 @@ namespace Drupal\file_entity\Plugin\Action;
 
 use Drupal\Core\Action\ActionBase;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
+use Drupal\Core\Session\AccountInterface;
 use Drupal\user\TempStoreFactory;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
@@ -37,6 +37,13 @@ class FileDelete extends ActionBase implements ContainerFactoryPluginInterface {
   public function __construct(array $configuration, $plugin_id, $plugin_definition, TempStoreFactory $temp_store_factory) {
     parent::__construct($configuration, $plugin_id, $plugin_definition);
     $this->tempStore = $temp_store_factory->get('file_multiple_delete_confirm');
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function access($object, AccountInterface $account = NULL, $return_as_object = FALSE) {
+    return TRUE;
   }
 
   /**
