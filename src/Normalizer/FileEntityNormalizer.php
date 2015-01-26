@@ -52,8 +52,13 @@ class FileEntityNormalizer extends ContentEntityNormalizer {
     // Avoid 'data' being treated as a field.
     $file_data = $data['data'][0]['value'];
     unset($data['data']);
+    // If the file is not base64 encoded do something else
+    if ( strpos($file_data, 'http') === 0 ) {
+      $file_contents = file_get_contents($file_data);
+    } else {
+      $file_contents = base64_decode($file_data);
+    }
     // Decode and save to file.
-    $file_contents = base64_decode($file_data);
     $entity = parent::denormalize($data, $class, $format, $context);
     $dirname = drupal_dirname($entity->getFileUri());
     file_prepare_directory($dirname, FILE_CREATE_DIRECTORY);
