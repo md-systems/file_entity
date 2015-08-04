@@ -83,6 +83,7 @@ function file_entity_tokens($type, $tokens, array $data, array $options, Bubblea
       switch ($name) {
         case 'type':
           if ($file_type = FileType::load($file->bundle())) {
+            $bubbleable_metadata->addCacheableDependency($file_type);
             $replacements[$original] = $sanitize ? SafeMarkup::checkPlain($file_type->label()) : $file_type->label();
           }
           break;
@@ -96,6 +97,7 @@ function file_entity_tokens($type, $tokens, array $data, array $options, Bubblea
     // Chained token relationships.
     $token_service = \Drupal::service('token');
     if (($file_type_tokens = $token_service->findWithPrefix($tokens, 'type')) && $file_type = FileType::load($file->bundle())) {
+      $bubbleable_metadata->addCacheableDependency($file_type);
       $replacements += $token_service->generate('file-type', $file_type_tokens, array('file_type' => $file_type), $options, $bubbleable_metadata);
     }
     if ($download_url_tokens = $token_service->findWithPrefix($tokens, 'download-url')) {
