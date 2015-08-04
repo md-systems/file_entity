@@ -6,6 +6,7 @@
  */
 
 namespace Drupal\file_entity\Tests;
+
 use Drupal\Core\Render\BubbleableMetadata;
 
 /**
