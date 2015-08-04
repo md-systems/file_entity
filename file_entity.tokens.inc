@@ -61,7 +61,7 @@ function file_entity_token_info_alter(&$info) {
 /**
  * Implements hook_tokens().
  */
-function file_entity_tokens($type, $tokens, array $data = array(), array $options = array(), BubbleableMetadata $bubbleable_metadata) {
+function file_entity_tokens($type, $tokens, array $data, array $options, BubbleableMetadata $bubbleable_metadata) {
   $replacements = array();
 
   $url_options = array('absolute' => TRUE);
