@@ -15,3 +15,4 @@ cd "$DRUPAL_TI_MODULES_PATH"
 
 # Download Pathauto 8.x-1.x
 git clone --depth 1 --branch 8.x-1.x https://github.com/md-systems/pathauto.git
+git clone --depth 1 --branch 8.x-1.x http://git.drupal.org/project/token.git
