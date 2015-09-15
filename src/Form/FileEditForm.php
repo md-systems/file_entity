@@ -8,7 +8,9 @@
 namespace Drupal\file_entity\Form;
 
 use Drupal\Core\Entity\ContentEntityForm;
+use Drupal\Core\Entity\Entity;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\file\Entity\File;
 use Drupal\file\FileInterface;
 use Drupal\file_entity\Entity\FileType;
 
@@ -118,10 +120,11 @@ class FileEditForm extends ContentEntityForm {
     // Check if a replacement file has been uploaded.
     if ($form_state->getValue('replace_upload')) {
       $replacement = $form_state->getValue('replace_upload')[0];
-      $log_args = array('@old' => $this->entity->getFilename(), '@new' => $replacement->getFilename());
+      $entity_replacement = File::load($replacement);
+      $log_args = array('@old' => $this->entity->getFilename(), '@new' => $form_state->getValue('filename')[0]['value']);
       // Move file from temp to permanent home.
-      if (file_unmanaged_copy($replacement->getFileUri(), $this->entity->getFileUri(), FILE_EXISTS_REPLACE)) {
-        $replacement->delete();
+      if (file_unmanaged_copy($entity_replacement->getFileUri(), $this->entity->getFileUri(), FILE_EXISTS_REPLACE)) {
+        $entity_replacement->delete();
         \Drupal::logger('file_entity')->info('File @old was replaced by @new', $log_args);
       }
       else {
