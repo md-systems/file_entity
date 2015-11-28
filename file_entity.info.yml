@@ -8,4 +8,5 @@ dependencies:
   - text
   - views
   - image
+  - hal
 configure: file_entity.settings
