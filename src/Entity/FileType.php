@@ -91,6 +91,13 @@ class FileType extends ConfigEntityBundleBase implements FileTypeInterface {
   /**
    * {@inheritdoc}
    */
+  public function getType() {
+    return $this->type;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
   public function getMimeTypes() {
     return $this->mimetypes ?: array();
   }
