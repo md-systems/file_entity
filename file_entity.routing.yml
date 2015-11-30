@@ -95,7 +95,7 @@ entity.file.canonical:
   requirements:
     _entity_access: 'file.view'
 
-file_entity.file_download:
+entity.file.download:
   path: /file/{file}/download
   defaults:
     _controller: '\Drupal\file_entity\Controller\FileController::download'

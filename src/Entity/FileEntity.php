@@ -388,19 +388,6 @@ class FileEntity extends File implements FileEntityInterface {
   }
 
   /**
-   * Returns a Url for a file download.
-   *
-   * @param array $options
-   *   (optional) Options for the URL object.
-   *
-   * @return \Drupal\Core\Url
-   *   An Url object for the download url.
-   */
-  public function downloadUrl($options = array()) {
-    return new Url('file_entity.file_download', array('file' => $this->id()), $options);
-  }
-
-  /**
    * Determines file type for a given file.
    *
    * @return string
