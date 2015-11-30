@@ -397,33 +397,7 @@ class FileEntity extends File implements FileEntityInterface {
    *   An Url object for the download url.
    */
   public function downloadUrl($options = array()) {
-    $url = new Url('file_entity.file_download', array('file' => $this->id()), $options);
-    if (!\Drupal::config('file_entity.settings')->get('allow_insecure_download')) {
-      $url->setOption('query', array('token' => \Drupal::csrfToken()->get($this->id())));
-    }
-    return $url;
-  }
-
-  /**
-   * Generates a token to protect a file download URL.
-   *
-   * This prevents unauthorized crawling of all file download URLs since the
-   * {file_managed}.fid column is an auto-incrementing serial field and is easy
-   * to guess or attempt many at once. This can be costly both in CPU time
-   * and bandwidth.
-   *
-   * @see image_style_path_token()
-   *
-   * @return string
-   *   An eight-character token which can be used to protect file downloads
-   *   against denial-of-service attacks.
-   */
-  public function getDownloadToken() {
-    // Return the first eight characters.
-    return substr(Crypt::hmacBase64(
-      "file/{$this->id()}/download:" . $this->getFileUri(),
-      \Drupal::service('private_key')->get() . Settings::getHashSalt()
-    ), 0, 8);
+    return new Url('file_entity.file_download', array('file' => $this->id()), $options);
   }
 
   /**

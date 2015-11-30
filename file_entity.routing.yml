@@ -102,6 +102,7 @@ file_entity.file_download:
     _title: 'Download file'
   requirements:
     _entity_access: 'file.download'
+    _csrf_token: 'TRUE'
 
 entity.file.edit_form:
   path: /file/{file}/edit
