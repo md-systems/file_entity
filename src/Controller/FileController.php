@@ -62,6 +62,13 @@ class FileController extends ControllerBase {
    *   The file to download, as a response.
    */
   public function download(FileInterface $file) {
+    // Ensure there is a valid token to download this file.
+    if (!$this->config('file_entity.settings')->get('allow_insecure_download')) {
+      if (!isset($_GET['token']) || $_GET['token'] !== $file->getDownloadToken()) {
+        return new Response(t('Access to file @url denied', array('@url' => $file->getFileUri())), 403);
+      }
+    }
+
     $headers = array(
       'Content-Type' => Unicode::mimeHeaderEncode($file->getMimeType()),
       'Content-Disposition' => 'attachment; filename="' . Unicode::mimeHeaderEncode(drupal_basename($file->getFileUri())) . '"',

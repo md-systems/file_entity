@@ -193,7 +193,6 @@ function file_entity_entity_type_alter(&$entity_types) {
     ->setLinkTemplate('edit-form', '/file/{file}/edit')
     ->setLinkTemplate('delete-form', '/file/{file}/delete')
     ->setLinkTemplate('inline-edit-form', '/file/{file}/inline-edit')
-    ->setLinkTemplate('download', '/file/{file}/download')
     ->setViewBuilderClass('Drupal\file_entity\Entity\FileEntityViewBuilder')
     ->setListBuilderClass('Drupal\Core\Entity\EntityListBuilder');
 

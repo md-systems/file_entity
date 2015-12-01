@@ -95,14 +95,13 @@ entity.file.canonical:
   requirements:
     _entity_access: 'file.view'
 
-entity.file.download:
+file_entity.file_download:
   path: /file/{file}/download
   defaults:
     _controller: '\Drupal\file_entity\Controller\FileController::download'
     _title: 'Download file'
   requirements:
     _entity_access: 'file.download'
-    _csrf_token: 'TRUE'
 
 entity.file.edit_form:
   path: /file/{file}/edit
