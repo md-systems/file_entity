@@ -92,7 +92,16 @@ class FileType extends ConfigEntityBundleBase implements FileTypeInterface {
    * {@inheritdoc}
    */
   public function getMimeTypes() {
-    return $this->mimetypes ?: array();
+    if($this->mimetypes){
+      $cleanedMimeTypes = [];
+      foreach ($this->mimetypes as $mimeType){
+        $cleanedMimeTypes[] = str_replace("\r", '',$mimeType);
+      }
+
+      return $cleanedMimeTypes;
+    }else{
+      return [];
+    }
   }
 
   /**
