@@ -155,6 +155,7 @@ function file_entity_entity_type_alter(&$entity_types) {
     ->set('entity_keys', $keys)
     ->set('bundle_entity_type', 'file_type')
     ->set('admin_permission', 'administer files')
+    ->set('viewable', TRUE)
     ->setClass('Drupal\file_entity\Entity\FileEntity')
     ->setHandlerClass('storage_schema', 'Drupal\file_entity\FileEntityStorageSchema')
     ->setFormClass('default', 'Drupal\file_entity\Form\FileEditForm')
